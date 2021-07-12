@@ -1,9 +1,10 @@
 require("dotenv").config();
 
+const cors = require("cors");
 const express = require("express");
-const app = express();
-
 const mongoose = require("mongoose");
+
+const app = express();
 
 const mongoUri = process.env.MONGODB_URI;
 const port = process.env.PORT;
@@ -15,3 +16,13 @@ mongoose.connect(
 );
 
 app.listen(port, console.log(`express app running on port:${port}`));
+
+// express routes
+const blogRoute = require("./routes/blog");
+const workRoute = require("./routes/work");
+
+app.use(cors());
+app.use(express.json());
+
+app.use("/blog", blogRoute);
+app.use("/work", workRoute);
