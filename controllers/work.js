@@ -1,7 +1,7 @@
 const formidable = require("formidable");
 const fs = require("fs");
 
-const Work = require("../models/workModel");
+const Work = require("../models/Work");
 
 exports.createWork = (req, res) => {
   let form = new formidable.IncomingForm();
@@ -33,10 +33,10 @@ exports.createWork = (req, res) => {
   });
 };
 
-exports.getWorks = async (req, res) => {
+exports.getWork = async (req, res) => {
   try {
-    const works = await Work.find().sort({ date: -1 });
-    res.json(works);
+    const work = await Work.find().sort({ date: -1 });
+    res.json(work);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("server error");

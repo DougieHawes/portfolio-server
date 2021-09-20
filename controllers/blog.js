@@ -1,7 +1,7 @@
 const formidable = require("formidable");
 const fs = require("fs");
 
-const Post = require("../models/postModel");
+const Post = require("../models/Post");
 
 exports.createPost = (req, res) => {
   let form = new formidable.IncomingForm();
